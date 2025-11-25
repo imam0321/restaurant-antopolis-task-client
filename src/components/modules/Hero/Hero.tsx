@@ -1,11 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Image from "next/image";
 import { useState } from "react";
 import HeroNav from "./HeroNav";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import HeroCircleAnimation from "./HeroCircleAnimation";
+import HeroMobileCarousel from "./HeroMobileCarousel";
+import HeroDesktopLeft from "./HeroDesktopLeft";
 
-const baseImages = [
+export interface IBaseImage {
+  id: number;
+  image: string;
+  mainColor: string;
+  circleColor: string;
+}
+
+const baseImages: IBaseImage[] = [
   {
     id: 1,
     image: "/hero/food-1.png",
@@ -34,34 +43,56 @@ const baseImages = [
 
 export default function Hero() {
   const [activeImageId, setActiveImageId] = useState(baseImages[0].id);
+  const [direction, setDirection] = useState(1);
+
   const activeImage =
     baseImages.find((img) => img.id === activeImageId) || baseImages[0];
 
-  const handleNextPrev = (direction: any) => {
+  const handleNextPrev = (moveDirection: "next" | "prev") => {
     const currentIndex = baseImages.findIndex(
       (img) => img.id === activeImageId
     );
     let newIndex;
+    let newDirection;
 
-    if (direction === "next") {
+    if (moveDirection === "next") {
       newIndex = (currentIndex + 1) % baseImages.length;
+      newDirection = 1;
     } else {
       newIndex = (currentIndex - 1 + baseImages.length) % baseImages.length;
+      newDirection = -1;
     }
 
+    setDirection(newDirection);
     setActiveImageId(baseImages[newIndex].id);
+  };
+
+  const handleThumbnailClick = (id: number) => {
+    const currentIndex = baseImages.findIndex(
+      (img) => img.id === activeImageId
+    );
+    const newIndex = baseImages.findIndex((img) => img.id === id);
+
+    // Determine direction based on index change
+    const newDirection =
+      newIndex > currentIndex ||
+      (newIndex === 0 && currentIndex === baseImages.length - 1)
+        ? 1
+        : -1;
+
+    setDirection(newDirection);
+    setActiveImageId(id);
   };
 
   const activeMainColor = activeImage.mainColor;
   const activeCircleColor = activeImage.circleColor;
-  const mainImageSrc =
-    baseImages.find((img) => img.id === activeImageId)?.image ||
-    baseImages[0].image;
+  const mainImageSrc = activeImage.image;
 
   return (
-    <div
-      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} mb-20 transition-colors duration-75`}
+    <section
+      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} mb-20 transition-colors duration-75 md:rounded-b-[20px] lg:rounded-b-[20px]`}
     >
+      {/* Top-left decorative circle - Simple static div for decoration */}
       <div
         className={`absolute 
         lg:w-[750px] w-[438px] 
@@ -70,32 +101,35 @@ export default function Hero() {
         left-[-146px] lg:-left-52
         ${activeCircleColor} 
         rounded-full
-        z-0 transition-colors duration-75`}
+        z-0 transition-colors duration-75 `}
       ></div>
-
-      <div
-        className={`absolute 
-        lg:w-[750px] w-[438px]
-        lg:h-[750px] h-[438px]
-        top-[470px] lg:top-[285px]
-        left-[130px] md:left-[550px] lg:left-[918px]
-        ${activeCircleColor}
-        rounded-full
-        z-0 transition-colors duration-75`}
-      ></div>
-
+      {/* Bottom-right Hero Circle Animation */}
+      <HeroCircleAnimation
+        activeImageId={activeImageId}
+        activeCircleColor={activeCircleColor}
+        mainImageSrc={mainImageSrc}
+        direction={direction}
+      />
+      {/* Content container */}
       <div className="relative z-20 px-4">
         <HeroNav />
-        {/* Hero Text */}
-        <div className="text-white mt-6 max-w-lg mx-9">
+        {/* desktop left section */}
+        <HeroDesktopLeft
+          baseImages={baseImages}
+          activeImageId={activeImageId}
+          handleThumbnailClick={handleThumbnailClick}
+        />
+        {/* Mobile Header */}
+        <header className="text-white mt-6 max-w-lg mx-9 lg:hidden md:hidden">
           <h1 className="text-3xl font-bold">BREAKFAST</h1>
           <p className="mt-3 text-base font-medium w-[280px]">
             Breakfast, often referred to as the ‘most important meal of the
             day’, provides essential nutrients to kick start our day.{" "}
             <span className="underline text-base font-medium">See more</span>
           </p>
-        </div>
-        <div className="mt-12">
+        </header>
+        {/* Mobile main image carousel */}
+        <div className="mt-12 lg:hidden md:hidden">
           <div className="flex justify-between items-center">
             <button
               onClick={() => handleNextPrev("prev")}
@@ -103,15 +137,17 @@ export default function Hero() {
             >
               <ChevronLeft className="w-5 h-5 text-white" strokeWidth={3} />
             </button>
-            <div className="relative w-[190px] h-[190px]">
+            <figure className="relative w-[190px] h-[190px]">
               <Image
                 src={mainImageSrc}
                 fill
                 alt="image"
                 className="object-contain"
                 key={mainImageSrc}
+                loading="eager"
+                sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
               />
-            </div>
+            </figure>
             <button
               onClick={() => handleNextPrev("next")}
               className="w-10 h-10 bg-[#F5878752] rounded-full flex items-center justify-center"
@@ -120,34 +156,13 @@ export default function Hero() {
             </button>
           </div>
         </div>
-
-        <div className="flex justify-center items-center gap-1 mt-16">
-          {baseImages.map((baseImage) => {
-            const isActive = baseImage.id === activeImageId;
-            return (
-              <div
-                key={baseImage.id}
-                className="flex-col justify-center items-center cursor-pointer"
-                onClick={() => setActiveImageId(baseImage.id)}
-              >
-                <div className="relative w-[70px] h-[70px] mb-2">
-                  <Image
-                    src={baseImage.image}
-                    fill
-                    className="object-contain"
-                    alt="Base image"
-                  />
-                </div>
-                <div
-                  className={`h-1 w-full rounded-lg ${
-                    isActive ? "bg-white" : "bg-transparent"
-                  }`}
-                ></div>
-              </div>
-            );
-          })}
-        </div>
+        {/* Mobile Image thumbnails for Carousel */}
+        <HeroMobileCarousel
+          baseImages={baseImages}
+          activeImageId={activeImageId}
+          setActiveImageId={setActiveImageId}
+        />
       </div>
-    </div>
+    </section>
   );
 }
