@@ -10,9 +10,7 @@ interface HeroCircleAnimationProps {
 
 const spinEnterExitVariants: Variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? "0%" : "-0%",
-    y: direction > 0 ? "-0%" : "0%",
-    rotate: direction > 0 ? 20 : -20,
+    rotate: direction > 0 ? 180 : -180,
     opacity: 0,
     transition: {
       duration: 1.0,
@@ -21,26 +19,21 @@ const spinEnterExitVariants: Variants = {
   }),
 
   center: {
-    x: "0%",
-    y: "0%",
     rotate: 0,
     opacity: 1,
     transition: {
-      duration: 1.2,
+      duration: 1.0,
       ease: "easeOut",
     },
   },
 
   exit: (direction: number) => ({
-    x: direction > 0 ? "-50%" : "50%",
-    y: direction > 0 ? "50%" : "-50%",
     rotate: direction > 0 ? -180 : 180,
-    opacity: 0,
-    backgroundColor: "transparent",
-    z: 10,
+    opacity: -1.0,
+    z:20,
     transition: {
       duration: 1.0,
-      ease: "easeInOut",
+      ease: "easeIn",
     },
   }),
 };
@@ -62,7 +55,7 @@ export default function HeroCircleAnimation({
           left-[130px] 
           ${activeCircleColor}
           rounded-full
-          z-0 transition-colors duration-75 lg:hidden md:hidden`}
+          z-0 transition-colors duration-100 lg:hidden md:hidden`}
       ></div>
       {/* Desktop view */}
       <AnimatePresence initial={false} custom={direction}>
@@ -77,13 +70,13 @@ export default function HeroCircleAnimation({
           w-[438px] h-[438px] top-[470px] left-[130px] 
           md:w-[538px] md:h-[538px] md:top-[470px] md:left-[400px] 
           lg:w-[750px] lg:h-[750px] lg:top-[285px] lg:left-[918px] 
-          ${activeCircleColor} rounded-full z-0 transition-colors duration-75 lg:block md:block hidden`}
+          ${activeCircleColor} rounded-full z-0 lg:block md:block hidden`}
         >
           {/* Image only shows on md/lg */}
           <figure
             className="relative hidden md:block lg:block 
           md:w-[400px] md:h-[400px] lg:w-[470px] lg:h-[470px] 
-          top-[-85px] left-[-60px]"
+          top-[-85px] left-[-60px] transition duration-100"
           >
             <Image
               src={mainImageSrc}

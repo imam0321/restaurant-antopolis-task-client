@@ -90,7 +90,7 @@ export default function Hero() {
 
   return (
     <section
-      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} mb-20 transition-colors duration-75 md:rounded-b-[20px] lg:rounded-b-[20px]`}
+      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} mb-20 transition-colors duration-100 md:rounded-b-[20px] lg:rounded-b-[20px]`}
     >
       {/* Top-left decorative circle - Simple static div for decoration */}
       <div
@@ -101,7 +101,7 @@ export default function Hero() {
         left-[-146px] lg:-left-52
         ${activeCircleColor} 
         rounded-full
-        z-0 transition-colors duration-75 `}
+        z-0 transition-colors duration-100 `}
       ></div>
       {/* Bottom-right Hero Circle Animation */}
       <HeroCircleAnimation
