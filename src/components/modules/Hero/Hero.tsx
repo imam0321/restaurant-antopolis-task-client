@@ -90,7 +90,7 @@ export default function Hero() {
 
   return (
     <section
-      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} mb-20 transition-colors duration-100 md:rounded-b-[20px] lg:rounded-b-[20px]`}
+      className={`relative w-full lg:h-[675px] h-[780px] overflow-hidden ${activeMainColor} transition-colors duration-100 md:rounded-b-[20px] lg:rounded-b-[20px]`}
     >
       {/* Top-left decorative circle - Simple static div for decoration */}
       <div
@@ -121,11 +121,11 @@ export default function Hero() {
         />
         {/* Mobile Header */}
         <header className="text-white mt-6 max-w-lg mx-9 lg:hidden md:hidden">
-          <h1 className="text-3xl font-bold">BREAKFAST</h1>
-          <p className="mt-3 text-base font-medium w-[280px]">
+          <h1 className="text-[2.813rem] font-normal">BREAKFAST</h1>
+          <p className="mt-3 text-base font-normal w-[280px]">
             Breakfast, often referred to as the ‘most important meal of the
             day’, provides essential nutrients to kick start our day.{" "}
-            <span className="underline text-base font-medium">See more</span>
+            <span className="underline text-base font-normal">See more</span>
           </p>
         </header>
         {/* Mobile main image carousel */}

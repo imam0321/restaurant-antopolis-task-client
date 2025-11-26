@@ -13,15 +13,15 @@ export default function HeroDesktopLeft({
   handleThumbnailClick,
 }: HeroDesktopLeft) {
   return (
-    <section className="text-white mt-28 max-w-lg mx-9 lg:block md:block hidden">
-      <h1 className="text-7xl">BREAKFAST</h1>
-      <p className="mt-1 text-[14px] font-bold w-[620px]">
+    <section className="text-white mt-24 mx-9 lg:block md:block hidden">
+      <h1 className="lg:text-[6rem] font-normal">BREAKFAST</h1>
+      <p className="lg:text-[1.25] font-bold w-[720px] -mt-6">
         Breakfast, often referred to as the ‘most important meal of the day’,
         provides essential nutrients to kick start our day. It includes a
         variety of foods, like fruits, cereals, dairy products, and proteins,
         that contribute to a balanced diet.
       </p>
-      <div className="lg:flex md:flex hidden justify-between items-center mt-4">
+      <div className="lg:flex md:flex max-w-lg hidden justify-between items-center mt-4">
         {baseImages.map((baseImage) => {
           const isActive = baseImage.id === activeImageId;
           return (

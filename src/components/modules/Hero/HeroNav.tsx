@@ -2,20 +2,20 @@ import { Search } from "lucide-react";
 
 export default function HeroNav() {
   return (
-    <div className="flex items-center justify-between mx-4 mt-10 gap-4">
+    <div className="flex items-center justify-between mx-1 lg:mx-4 mt-10">
       {/* Logo / Title */}
-      <h1 className="hidden sm:flex uppercase text-2xl font-bold text-white z-10">
+      <h1 className="hidden sm:block uppercase text-2xl lg:text-[2rem] font-bold text-white">
         Restaurant
       </h1>
 
       {/* Search Bar */}
-      <div className="z-20 w-full sm:w-auto flex-1 max-w-lg">
-        <div className="flex items-center bg-white text-[#2D2D2D] rounded-xl px-4 py-2 shadow-md">
+      <div className="flex-1 max-w-[590px]">
+        <div className="flex items-center lg:h-10 h-9 bg-white text-[#2D2D2D] rounded-lg px-4">
           <Search className="mr-3 text-[#414141]" />
           <input
             type="text"
             placeholder="Search..."
-            className="w-full text-[#2D2D2D] text-base outline-none bg-transparent"
+            className="w-full text-base outline-none placeholder:font-medium"
           />
         </div>
       </div>
