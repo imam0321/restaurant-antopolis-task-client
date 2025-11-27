@@ -25,19 +25,19 @@ export default function DishesFilter({
   };
 
   return (
-    <div className="flex flex-row items-center gap-[2.77px]">
+    <div className="flex lg:flex-row flex-row-reverse items-center gap-[2.77px]">
       {allCategories.map((cat) => (
-        <button
+        <span
           key={cat._id}
           onClick={() => handleCategoryClick(cat.name)}
-          className={`flex items-center justify-center rounded-xl lg:rounded-3xl h-[22px] lg:h-10 px-2.5 lg:px-4 text-[0.485rem] lg:text-[1.75rem] ${
+          className={`rounded-xl lg:rounded-3xl lg:h-10 px-2.5 lg:px-4 text-[0.485rem] lg:text-[1.75rem] cursor-pointer ${
             currentCategory === cat.name.toLowerCase()
               ? "bg-black text-white"
               : "border border-[#BABABA]"
           }`}
         >
           {cat.name}
-        </button>
+        </span>
       ))}
     </div>
   );

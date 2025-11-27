@@ -22,28 +22,26 @@ export default function AddCategoryForm({
   }, [state, onSuccess, onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg p-8 relative">
+    <div className="fixed inset-0 z-50 bg-black/10 flex justify-center items-center p-2">
+      <div className="relative w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 font-bold"
+          className="absolute top-4 right-4 text-gray-700 font-bold"
           disabled={isPending}
         >
           ✕
         </button>
 
-        <h2 className="text-2xl font-light text-center text-gray-400 mb-8">
-          Add Category
-        </h2>
+        <h2 className="text-lg text-center text-white mb-4">Add Category</h2>
 
-        <form action={formAction} className="space-y-4">
+        <form action={formAction} className="space-y-2">
           <div>
             <input
               type="text"
               name="name"
               placeholder="Category Name"
               disabled={isPending}
-              className="w-full px-6 py-3 rounded-full bg-white border border-gray-300 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50"
+              className="w-full px-6 py-1 rounded-full border border-linear-to-r from-[#FFFFFF] to-[#7C7B7B] opacity-80  text-white focus:outline-none"
               required
             />
 
@@ -67,7 +65,7 @@ export default function AddCategoryForm({
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3 rounded-full bg-[#D3332F] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-1 rounded-full bg-[#D3332F] text-white  disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? "Saving..." : "Save"}
           </button>

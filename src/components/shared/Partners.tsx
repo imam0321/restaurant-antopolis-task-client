@@ -18,10 +18,10 @@ export default function Partners() {
   return (
     <div className="my-16 md:my-24 max-w-4xl lg:mx-auto md:mx-auto">
       <div className="text-center mb-2">
-        <p className="text-[#8B0000] font-semibold uppercase tracking-widest text-sm">
+        <p className="text-[#A52A2A] tracking-widest text-sm">
           Partners & Clients
         </p>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#333333]">
           We Work With The Best People
         </h1>
       </div>
@@ -39,15 +39,16 @@ export default function Partners() {
           {infiniteClients.map((client, index) => (
             <div
               key={`${client.id}-${index}`}
-              className="shrink-0 flex items-center justify-center w-[140px]"
+              className="shrink-0 flex items-center justify-center"
             >
               <Image
                 src={client.img}
                 alt={client.alt}
                 width={150}
                 height={80}
-                className="object-contain opacity-60 hover:opacity-100 transition-all duration-75"
+                className="object-contain opacity-20 hover:opacity-100 transition-all duration-75"
                 draggable={false}
+                priority
               />
             </div>
           ))}

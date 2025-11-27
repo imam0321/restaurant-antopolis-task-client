@@ -20,7 +20,7 @@ export default async function Dishes({
         <p className="text-[#5C5C5C] lg:hidden md:hidden">
           Our fresh garden salad is a light and refreshing option.
         </p>
-        <p className="text-[#5C5C5C] lg:text-[1.563rem] w-[852px] lg:block md:block hidden mx-auto">
+        <p className="text-[#5C5C5C] lg:text-[1.563rem] lg:w-[852px] md:w-[800px] lg:block md:block hidden mx-auto">
           Our fresh garden salad is a light and refreshing option. It features a
           mix of crisp lettuce, juicy tomatoe all tossed in your choice of
           dressing.
@@ -29,7 +29,6 @@ export default async function Dishes({
       {/* Category Filter Buttons */}
       <div className="flex justify-between items-center mt-6 lg:mx-12 mx-4">
         <DishesFilter categories={categories} />
-
         <DishButtons categories={categories}/>
       </div>
       {/* Food Card List */}

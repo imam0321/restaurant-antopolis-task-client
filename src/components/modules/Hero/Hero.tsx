@@ -120,7 +120,7 @@ export default function Hero() {
           handleThumbnailClick={handleThumbnailClick}
         />
         {/* Mobile Header */}
-        <header className="text-white mt-6 max-w-lg mx-9 lg:hidden md:hidden">
+        <header className="text-white mt-6 max-w-lg mx-5 lg:hidden md:hidden">
           <h1 className="text-[2.813rem] font-normal">BREAKFAST</h1>
           <p className="mt-3 text-base font-normal w-[280px]">
             Breakfast, often referred to as the ‘most important meal of the

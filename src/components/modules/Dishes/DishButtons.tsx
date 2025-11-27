@@ -21,38 +21,35 @@ export default function DishButtons({categories}: {categories: ICategory[]}) {
 
   return (
     <>
-      <div className="flex items-center gap-x-[2.77px]">
-        <button
+      <div className="flex justify-end items-center gap-x-2">
+        <span
           onClick={() => setActiveForm("food")}
-          className="flex items-center justify-center
-            bg-[#2C2C2C] text-white
-            rounded-xl lg:rounded-3xl
-            h-[22px] lg:h-10
-            px-2.5 lg:px-4 lg:py-4
-            text-[0.519rem] lg:text-[1.875rem]"
+          className="bg-[#2C2C2C] text-white text-[0.485rem] lg:text-[1.75rem] px-2.5 lg:px-4 lg:py-2 rounded-xl lg:rounded-3xl cursor-pointer"
         >
           Add Food
-        </button>
+        </span>
 
-        <button
+        <span
           onClick={() => setActiveForm("category")}
-          className="flex items-center justify-center
-            bg-[#2C2C2C] text-white
-            rounded-xl lg:rounded-3xl
-            h-[22px] lg:h-10
-            px-2.5 lg:px-4 lg:py-4
-            text-[0.519rem] lg:text-[1.875rem]"
+          className="bg-[#2C2C2C] text-white text-[0.485rem] lg:text-[1.75rem] px-2.5 lg:px-4 lg:py-2 rounded-xl lg:rounded-3xl cursor-pointer"
         >
           Add Category
-        </button>
+        </span>
       </div>
 
       {/* Conditional Rendering */}
       {activeForm === "food" && (
-        <AddFoodForm onSuccess={handleSuccess} categories={categories} onClose={() => setActiveForm(null)} />
+        <AddFoodForm
+          onSuccess={handleSuccess}
+          categories={categories}
+          onClose={() => setActiveForm(null)}
+        />
       )}
       {activeForm === "category" && (
-        <AddCategoryForm onSuccess={handleSuccess}  onClose={() => setActiveForm(null)} />
+        <AddCategoryForm
+          onSuccess={handleSuccess}
+          onClose={() => setActiveForm(null)}
+        />
       )}
     </>
   );

@@ -19,9 +19,8 @@ export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
   return (
     <section className="lg:mx-56 mx-4" ref={ref}>
       <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-8">
-
         {/* Feedback section - slide from left */}
-        <FeedbackList feedbacks={feedbacks} controls={controls}/>
+        <FeedbackList feedbacks={feedbacks} controls={controls} />
         {/* RIGHT: Image - slide from bottom */}
         <motion.div
           className="relative md:w-1/3 w-full flex justify-center"
@@ -29,7 +28,11 @@ export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
           animate={controls}
           variants={{
             hidden: { y: 200, opacity: 0 },
-            visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut", delay: 0.2 } },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            },
           }}
         >
           <div
@@ -43,6 +46,9 @@ export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
               fill
               src="https://res.cloudinary.com/dzmvhztng/image/upload/v1763999213/shef_lxtvm5.png"
               alt="Chef"
+              sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
+              loading="eager" 
+              priority
             />
           </div>
         </motion.div>

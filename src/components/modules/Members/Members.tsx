@@ -40,7 +40,6 @@ export default function Members({ members }: { members: IMember[] }) {
 
   return (
     <section className="mb-16 lg:mt-0 mt-10">
-
       {/* Header Section */}
       <div
         className="py-24 text-white text-center relative -mb-16"
@@ -63,7 +62,6 @@ export default function Members({ members }: { members: IMember[] }) {
 
       {/* Team Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 max-w-4xl gap-4 mx-4 md:mx-auto lg:mx-auto">
-
         {members.map((member, i) =>
           isMobile ? (
             <motion.div
@@ -81,6 +79,7 @@ export default function Members({ members }: { members: IMember[] }) {
                   alt={member.name}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
                 />
               </div>
 
@@ -97,6 +96,7 @@ export default function Members({ members }: { members: IMember[] }) {
                   alt={member.name}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
                 />
               </div>
 

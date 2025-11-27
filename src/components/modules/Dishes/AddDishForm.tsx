@@ -47,8 +47,8 @@ export function AddFoodForm({
   }, [state, onSuccess, onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg p-8 relative">
+    <div className="fixed inset-0 z-50 bg-black/10 flex justify-center items-center p-2">
+      <div className="relative w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 font-bold"
@@ -57,29 +57,36 @@ export function AddFoodForm({
           ✕
         </button>
 
-        <h2 className="text-2xl font-light text-center text-gray-400 mb-8">
-          Add Food
-        </h2>
+        <h2 className="text-lg text-center text-white mb-8">Add Food</h2>
 
-        <form action={formAction} className="space-y-4">
+        <form action={formAction} className="space-y-2">
           <input
             type="text"
             name="name"
             placeholder="Food Name"
             disabled={isPending}
-            className="w-full px-6 py-3 rounded-full bg-white border border-gray-300 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50"
+            className="w-full px-6 py-1 rounded-full border border-linear-to-r from-[#FFFFFF] to-[#7C7B7B] opacity-80 text-white focus:outline-none"
             required
           />
           <select
             name="category_id"
             disabled={isPending}
-            className="w-full px-6 py-3 rounded-full bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 appearance-none"
+            className="w-full px-6 py-1 rounded-full  border border-linear-to-r from-[#FFFFFF] to-[#7C7B7B] opacity-80 text-white/50 focus:outline-none appearance-none"
             required
           >
-            <option value="">Select Category</option>
+            <option
+              className="text-white/50 bg-[#999999] backdrop-blur-sm "
+              value=""
+            >
+              Select Category
+            </option>
             {categories &&
               categories.map((cat) => (
-                <option key={cat._id} value={cat._id}>
+                <option
+                  key={cat._id}
+                  value={cat._id}
+                  className="text-white/50 bg-[#999999] backdrop-blur-sm "
+                >
                   {cat.name}
                 </option>
               ))}
@@ -87,7 +94,7 @@ export function AddFoodForm({
           <div
             onDragOver={handleDragOver}
             onDrop={handleDrop}
-            className="relative w-full px-6 py-3 rounded-full bg-red-100 border-2 border-dashed border-red-300 text-center cursor-pointer hover:bg-red-200 transition-colors overflow-hidden"
+            className="relative w-full h-8 px-6 py-1 rounded-full bg-red-100 border border-dashed border-red-300 text-center cursor-pointer hover:bg-red-200 transition-colors overflow-hidden"
           >
             <input
               type="file"
@@ -99,20 +106,19 @@ export function AddFoodForm({
             />
             {imagePreview ? (
               <div className="flex items-center justify-center gap-2">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                <div className="relative w-6 h-6 rounded-full overflow-hidden">
                   <Image
                     src={imagePreview}
                     alt="Preview"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
                   />
                 </div>
                 <span className="text-red-400 text-sm">Image Selected</span>
               </div>
             ) : (
-              <span className="text-red-400 text-sm">
-                Upload or Drag Image here
-              </span>
+              <span className="text-red-400">Upload or Drag Image here</span>
             )}
           </div>
           {state?.message && (
@@ -127,7 +133,7 @@ export function AddFoodForm({
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3 rounded-full bg-[#D3332F] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-1 rounded-full bg-[#D3332F] text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? "Saving..." : "Save"}
           </button>
