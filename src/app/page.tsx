@@ -3,7 +3,12 @@ import Feedback from "@/components/modules/Feedback/Feedback";
 import Hero from "@/components/modules/Hero/Hero";
 import Members from "@/components/modules/Members/Members";
 import Partners from "@/components/shared/Partners";
-import { getAllCategories, getAllDishes, getAllFeedbacks } from "@/services";
+import {
+  getAllCategories,
+  getAllDishes,
+  getAllFeedbacks,
+  getAllMembers,
+} from "@/services";
 import { Suspense } from "react";
 
 export default async function HomePage({
@@ -24,7 +29,7 @@ export default async function HomePage({
   const dishes = await getAllDishes(queryString);
   const categories = await getAllCategories();
   const feedbacks = await getAllFeedbacks();
-console.log(feedbacks)
+  const members = await getAllMembers();
   return (
     <>
       <Hero />
@@ -32,9 +37,7 @@ console.log(feedbacks)
         <Dishes dishes={dishes.data} categories={categories.data} />
       </Suspense>
       <Feedback feedbacks={feedbacks.data} />
-      <Suspense>
-        <Members />
-      </Suspense>
+      <Members members={members.data} />
       <Partners />
     </>
   );

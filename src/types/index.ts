@@ -21,3 +21,10 @@ export interface IFeedback {
   position: string
   profile: string
 }
+
+export interface IMember {
+  _id: string;
+  name: string
+  position: string;
+  profile: string
+}
