@@ -12,11 +12,12 @@ export default function Partners() {
     { id: 5, img: "/icons/image-5.png", alt: "Wolf Coffee Client" },
     { id: 6, img: "/icons/image-6.png", alt: "Bistro Client" },
   ];
+
   const infiniteClients = [...clients, ...clients];
 
   return (
-    <div className="my-16 md:my-24 max-w-5xl mx-auto">
-      <div className="text-center mb-12">
+    <div className="my-16 md:my-24 max-w-4xl lg:mx-auto md:mx-auto">
+      <div className="text-center mb-2">
         <p className="text-[#8B0000] font-semibold uppercase tracking-widest text-sm">
           Partners & Clients
         </p>
@@ -24,32 +25,28 @@ export default function Partners() {
           We Work With The Best People
         </h1>
       </div>
-
-      <div className="lg:overflow-hidden lg:mx-12">
+      <div className="overflow-hidden w-full">
         <motion.div
-          className="flex items-center"
-          animate={{ x: ["0%", "50%"] }}
+          className="flex gap-0"
+          animate={{ x: ["-50%", "0%"] }}
           transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 25,
-              ease: "linear",
-            },
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 5,
+            ease: "linear",
           }}
         >
           {infiniteClients.map((client, index) => (
             <div
               key={`${client.id}-${index}`}
-              className="shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 transition duration-300"
+              className="shrink-0 flex items-center justify-center w-[140px]"
             >
               <Image
                 src={client.img}
-                alt="Client"
-                width={239}
-                height={128}
-                style={{ rotate: "0deg", opacity: 1 }}
-                className="object-contain"
+                alt={client.alt}
+                width={150}
+                height={80}
+                className="object-contain opacity-60 hover:opacity-100 transition-all duration-75"
                 draggable={false}
               />
             </div>
