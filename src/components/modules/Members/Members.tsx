@@ -34,6 +34,9 @@ export default function Members({ members }: { members: IMember[] }) {
       transition: { duration: 0.6, ease: "easeOut" },
     },
   };
+   if (!members) {
+    return null;
+  }
 
   return (
     <section className="mb-16 lg:mt-0 mt-10">

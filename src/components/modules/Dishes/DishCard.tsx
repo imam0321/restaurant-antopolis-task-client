@@ -9,7 +9,7 @@ export default function DishCard({ dish }: { dish: IDish }) {
         <Image
           src={dish?.thumbnail || "/hero/dish-1.png"}
           fill
-          alt={dish.name}
+          alt={dish?.name}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -17,10 +17,10 @@ export default function DishCard({ dish }: { dish: IDish }) {
       <div className="lg:p-4 p-2 flex flex-col justify-between flex-1">
         <div className="flex justify-between items-center mb-4">
           <h2 className="lg:text-xl text-sm font-medium text-black">
-            {dish.name}
+            {dish?.name}
           </h2>
           <span className="lg:bg-[#F03328] bg-[#A52A2A] text-white lg:text-base text-xs px-3 py-1 rounded-full">
-            {dish.category_id.name}
+            {dish?.category_id?.name}
           </span>
         </div>
         <div className="flex justify-between items-center mt-auto">

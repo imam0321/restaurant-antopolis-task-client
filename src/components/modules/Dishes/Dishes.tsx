@@ -1,6 +1,7 @@
 import DishCard from "./DishCard";
 import { ICategory, IDish } from "@/types";
 import DishesFilter from "./DishesFilter";
+import DishButtons from "./DishButtons";
 
 export default async function Dishes({
   dishes,
@@ -9,7 +10,6 @@ export default async function Dishes({
   dishes: IDish[];
   categories: ICategory[];
   }) {
-  
   return (
     <div className="mb-10 max-w-5xl mx-auto">
       {/* Dish header */}
@@ -29,32 +29,12 @@ export default async function Dishes({
       {/* Category Filter Buttons */}
       <div className="flex justify-between items-center mt-6 lg:mx-12 mx-4">
         <DishesFilter categories={categories} />
-        <div className="flex items-center gap-x-[2.77px]">
-          <button
-            className="flex items-center justify-center
-        bg-[#2C2C2C] text-white
-        rounded-xl lg:rounded-3xl
-        h-[22px] lg:h-10
-        px-2.5 lg:px-4 lg:py-4
-        text-[0.519rem] lg:text-[1.875rem]"
-          >
-            Add Food
-          </button>
-          <button
-            className="flex items-center justify-center
-        bg-[#2C2C2C] text-white
-        rounded-xl lg:rounded-3xl
-        h-[22px] lg:h-10
-        px-2.5 lg:px-4 lg:py-4
-          text-[0.519rem] lg:text-[1.875rem]"
-          >
-            Add Category
-          </button>
-        </div>
+
+        <DishButtons categories={categories}/>
       </div>
       {/* Food Card List */}
       <div className="grid lg:grid-cols-3 grid-cols-2 gap-4 lg:mt-10 mt-4 lg:mx-12 mx-4">
-        {dishes.map((dish: IDish) => (
+        {dishes && dishes.map((dish: IDish) => (
           <DishCard key={dish._id} dish={dish} />
         ))}
       </div>

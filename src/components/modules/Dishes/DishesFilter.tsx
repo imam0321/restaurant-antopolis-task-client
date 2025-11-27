@@ -7,7 +7,7 @@ export default function DishesFilter({
 }: {
   categories: ICategory[];
 }) {
-  const allCategories = [{ _id: "all", name: "All" }, ...categories];
+  const allCategories = [{ _id: "all", name: "All" }, ...(categories || [])];
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get("category") || "all";

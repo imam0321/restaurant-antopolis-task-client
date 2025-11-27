@@ -1,7 +1,9 @@
 import Dishes from "@/components/modules/Dishes/Dishes";
+import LoadingDish from "@/components/modules/Dishes/LoadingDish";
 import Feedback from "@/components/modules/Feedback/Feedback";
 import Hero from "@/components/modules/Hero/Hero";
 import Members from "@/components/modules/Members/Members";
+import Footer from "@/components/shared/Footer";
 import Partners from "@/components/shared/Partners";
 import {
   getAllCategories,
@@ -33,12 +35,14 @@ export default async function HomePage({
   return (
     <>
       <Hero />
-      <Suspense>
-        <Dishes dishes={dishes.data} categories={categories.data} />
-      </Suspense>
-      <Feedback feedbacks={feedbacks.data} />
-      <Members members={members.data} />
+      <Suspense fallback={<LoadingDish/>}>
+        <Dishes dishes={dishes?.data} categories={categories?.data} />
+        <Feedback feedbacks={feedbacks?.data} />
+      <Members members={members?.data} />
       <Partners />
+      <Footer/>
+      </Suspense>
+      
     </>
   );
 }
