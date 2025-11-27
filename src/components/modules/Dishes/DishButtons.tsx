@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { AddFoodForm } from "./AddDishForm";
 import AddCategoryForm from "./AddCategoryForm";
 import { ICategory } from "@/types";
+import { useRouter } from "next/navigation";
 
 export default function DishButtons({categories}: {categories: ICategory[]}) {
   const [activeForm, setActiveForm] = useState<"food" | "category" | null>(
     null
   );
+  const router = useRouter();
+  const [, startTransition] = useTransition();
+
+  const handleSuccess = () => {
+    startTransition(() => {
+      router.refresh();
+    });
+  };
 
   return (
     <>
@@ -40,10 +49,10 @@ export default function DishButtons({categories}: {categories: ICategory[]}) {
 
       {/* Conditional Rendering */}
       {activeForm === "food" && (
-        <AddFoodForm categories={categories} onClose={() => setActiveForm(null)} />
+        <AddFoodForm onSuccess={handleSuccess} categories={categories} onClose={() => setActiveForm(null)} />
       )}
       {activeForm === "category" && (
-        <AddCategoryForm onClose={() => setActiveForm(null)} />
+        <AddCategoryForm onSuccess={handleSuccess}  onClose={() => setActiveForm(null)} />
       )}
     </>
   );

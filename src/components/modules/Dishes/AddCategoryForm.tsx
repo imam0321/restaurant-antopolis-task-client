@@ -1,10 +1,25 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { createCategory } from "@/services";
 
-export default function AddCategoryForm({ onClose }: { onClose: () => void }) {
+interface IAddCategoryFormProps {
+  onClose: () => void;
+  onSuccess: () => void;
+}
+
+export default function AddCategoryForm({
+  onClose,
+  onSuccess,
+}: IAddCategoryFormProps) {
   const [state, formAction, isPending] = useActionState(createCategory, null);
+
+  useEffect(() => {
+    if (state && state?.success) {
+      onSuccess();
+      onClose();
+    }
+  }, [state, onSuccess, onClose]);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">

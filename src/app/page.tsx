@@ -35,14 +35,13 @@ export default async function HomePage({
   return (
     <>
       <Hero />
-      <Suspense fallback={<LoadingDish/>}>
+      <Suspense fallback={<LoadingDish />}>
         <Dishes dishes={dishes?.data} categories={categories?.data} />
-        <Feedback feedbacks={feedbacks?.data} />
+      </Suspense>
+      <Feedback feedbacks={feedbacks?.data} />
       <Members members={members?.data} />
       <Partners />
-      <Footer/>
-      </Suspense>
-      
+      <Footer />
     </>
   );
 }

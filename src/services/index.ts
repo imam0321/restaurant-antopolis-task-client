@@ -3,9 +3,7 @@
 
 export const getAllDishes = async (queryString?: string) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/dishes${queryString ? `?${queryString}` : ""}`, {
-      cache: "no-cache"
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/dishes${queryString ? `?${queryString}` : ""}`);
     return await res.json();
   } catch (error: any) {
     return error.message
@@ -15,7 +13,7 @@ export const getAllDishes = async (queryString?: string) => {
 export const getAllCategories = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/category`, {
-      cache: "no-cache"
+      next: { tags: ['categories'] },
     });
     return await res.json();
   } catch (error: any) {
@@ -67,7 +65,6 @@ export const createCategory = async (_prevState: any, formData: FormData) => {
   }
 };
 
-
 export const getAllFeedbacks = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/common/feedbacks`, {
@@ -78,6 +75,7 @@ export const getAllFeedbacks = async () => {
     return error.message
   }
 }
+
 export const getAllMembers = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/common/members`, {

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { createDish } from "@/services";
 import { ICategory } from "@/types";
@@ -9,9 +9,14 @@ import { ICategory } from "@/types";
 interface AddFoodFormProps {
   onClose: () => void;
   categories: ICategory[];
+  onSuccess: () => void;
 }
 
-export function AddFoodForm({ onClose, categories }: AddFoodFormProps) {
+export function AddFoodForm({
+  onClose,
+  categories,
+  onSuccess,
+}: AddFoodFormProps) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [state, formAction, isPending] = useActionState(createDish, null);
 
@@ -33,6 +38,13 @@ export function AddFoodForm({ onClose, categories }: AddFoodFormProps) {
     e.preventDefault();
     handleFileChange(e.dataTransfer.files?.[0] ?? null);
   };
+
+  useEffect(() => {
+    if (state && state?.success) {
+      onSuccess();
+      onClose();
+    }
+  }, [state, onSuccess, onClose]);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
