@@ -13,3 +13,11 @@ export interface IDish {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IFeedback {
+  _id: string
+  name: string
+  description: string;
+  position: string
+  profile: string
+}

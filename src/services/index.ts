@@ -17,4 +17,16 @@ export const getAllCategories = async () => {
   } catch (error: any) {
     return error.message
   }
-} 
+}
+
+export const getAllFeedbacks = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/common/feedbacks`, {
+      cache: "force-cache"
+    });
+    return await res.json();
+  } catch (error: any) {
+    return error.message
+  }
+}
+
