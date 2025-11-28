@@ -2,6 +2,7 @@ import Dishes from "@/components/modules/Dishes/Dishes";
 import Feedback from "@/components/modules/Feedback/Feedback";
 import Hero from "@/components/modules/Hero/Hero";
 import Members from "@/components/modules/Members/Members";
+import Footer from "@/components/shared/Footer";
 import Partners from "@/components/shared/Partners";
 import {
   getAllCategories,
@@ -38,6 +39,7 @@ export default async function HomePage({
       </div>
       <Members members={members?.data} />
       <Partners />
+      <Footer />
     </div>
   );
 }
