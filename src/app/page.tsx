@@ -31,7 +31,7 @@ export default async function HomePage({
   const members = await getAllMembers();
   return (
     <div>
-      <Hero />
+      <Hero dishes={dishes?.data}/>
       <div className="max-w-4xl lg:mx-auto md:mx-10 mx-4">
         <Dishes dishes={dishes?.data} categories={categories?.data} />
         <Feedback feedbacks={feedbacks?.data} />

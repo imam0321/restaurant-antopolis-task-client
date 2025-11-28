@@ -4,6 +4,7 @@ import HeroNav from "./HeroNav";
 import HeroCircleAnimation from "./HeroCircleAnimation";
 import HeroMobileCarousel from "./HeroMobileView";
 import HeroDesktopLeft from "./HeroDesktopLeft";
+import { IDish } from "@/types";
 
 export interface IBaseImage {
   id: number;
@@ -39,7 +40,7 @@ const baseImages: IBaseImage[] = [
   },
 ];
 
-export default function Hero() {
+export default function Hero({dishes}: {dishes: IDish[]}) {
   const [activeImageId, setActiveImageId] = useState(baseImages[0].id);
   const [direction, setDirection] = useState(1);
 
@@ -90,7 +91,7 @@ export default function Hero() {
         direction={direction}
       />
       <div className="relative z-20 px-4">
-        <HeroNav />
+        <HeroNav dishes={dishes} />
         {/* desktop left section */}
         <HeroDesktopLeft
           baseImages={baseImages}
