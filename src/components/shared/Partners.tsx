@@ -16,7 +16,7 @@ export default function Partners() {
   const infiniteClients = [...clients, ...clients];
 
   return (
-    <div className="my-16 md:my-24 max-w-4xl lg:mx-auto md:mx-auto">
+    <div className="my-16 md:my-24 max-w-4xl lg:mx-auto md:mx-10">
       <div className="text-center mb-2">
         <p className="text-[#A52A2A] tracking-widest text-sm">
           Partners & Clients

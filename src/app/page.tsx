@@ -1,9 +1,7 @@
 import Dishes from "@/components/modules/Dishes/Dishes";
-import LoadingDish from "@/components/modules/Dishes/LoadingDish";
 import Feedback from "@/components/modules/Feedback/Feedback";
 import Hero from "@/components/modules/Hero/Hero";
 import Members from "@/components/modules/Members/Members";
-import Footer from "@/components/shared/Footer";
 import Partners from "@/components/shared/Partners";
 import {
   getAllCategories,
@@ -11,7 +9,6 @@ import {
   getAllFeedbacks,
   getAllMembers,
 } from "@/services";
-import { Suspense } from "react";
 
 export default async function HomePage({
   searchParams,
@@ -33,15 +30,14 @@ export default async function HomePage({
   const feedbacks = await getAllFeedbacks();
   const members = await getAllMembers();
   return (
-    <>
+    <div>
       <Hero />
-      <Suspense fallback={<LoadingDish />}>
+      <div className="max-w-4xl lg:mx-auto md:mx-10 mx-4">
         <Dishes dishes={dishes?.data} categories={categories?.data} />
-      </Suspense>
-      <Feedback feedbacks={feedbacks?.data} />
+        <Feedback feedbacks={feedbacks?.data} />
+      </div>
       <Members members={members?.data} />
       <Partners />
-      <Footer />
-    </>
+    </div>
   );
 }

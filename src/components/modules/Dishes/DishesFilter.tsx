@@ -30,7 +30,7 @@ export default function DishesFilter({
         <span
           key={cat._id}
           onClick={() => handleCategoryClick(cat.name)}
-          className={`rounded-xl lg:rounded-3xl lg:h-10 px-2.5 lg:px-4 text-[0.485rem] lg:text-[1.75rem] cursor-pointer ${
+          className={`text-[0.5rem] lg:text-[1.5rem] px-2 lg:px-4 lg:py-0 rounded-xl lg:rounded-3xl cursor-pointer ${
             currentCategory === cat.name.toLowerCase()
               ? "bg-black text-white"
               : "border border-[#BABABA]"

@@ -20,7 +20,7 @@ const icons = [
 export default function Footer() {
   return (
     <footer className="bg-[#880808] text-white pt-12">
-      <div className="lg:mx-52 md:mx-10 mx-4 grid grid-cols-1 lg:grid-cols-8 md:grid-cols-2 lg:gap-2 gap-8">
+      <div className="lg:max-w-4xl lg:mx-auto md:mx-10 mx-4 grid grid-cols-1 lg:grid-cols-8 md:grid-cols-2 gap-8">
         <div className="lg:col-span-2 md:col-span-1">
           <h2 className="lg:text-[2rem] text-[1.5rem] font-bold mb-1">
             RESTAURANT
@@ -29,11 +29,11 @@ export default function Footer() {
             Subscribe our newsletter and get discount 25%off
           </p>
 
-          <div className="flex mt-2 lg:w-[220px] w-[300px]">
+          <div className="flex mt-2 max-w-[300px]">
             <input
               type="email"
               placeholder="Enter Your Email"
-              className="px-2 rounded-l-md text-black w-full bg-white"
+              className="px-2 rounded-l-md text-black w-full bg-white focus:outline-none"
             />
             <button className="bg-[#A52A2A] h-8 px-4 rounded-r-md">➤</button>
           </div>
@@ -55,16 +55,16 @@ export default function Footer() {
         <div className="lg:col-span-3 md:col-span-1">
           <h2 className="text-lg font-bold mb-4">Contact us</h2>
           <div className="space-y-3 text-sm">
-            <p className="flex items-center gap-x-1">
+            <p className="flex items-center gap-x-2">
               <MapPin size={16} /> 3517 W. Gray St. Utica, Pennsylvania 57867
             </p>
-            <p className="flex items-center gap-x-1">
+            <p className="flex items-center gap-x-2">
               <Phone size={16} /> 00965 - 96659986
             </p>
-            <p className="flex items-center gap-x-1">
+            <p className="flex items-center gap-x-2">
               <MailOpen size={16} /> M.Alyaqout@4house.Co
             </p>
-            <p className="flex items-center gap-x-1">
+            <p className="flex items-center gap-x-2">
               <Clock size={16} /> Sun - Sat / 10:00 AM - 8:00 PM
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-[#A52A2A] mt-12">
-        <div className="max-w-5xl mx-auto py-4 px-10 flex flex-col md:flex-row items-center justify-between text-sm text-white/80">
+        <div className="max-w-4xl lg:mx-auto md:mx-10 mx-auto py-4 flex flex-col md:flex-row items-center justify-between text-sm text-white/80">
           <p>Copyright © 2025. All rights reserved</p>
 
           <div className="lg:flex md:flex hidden space-x-4">

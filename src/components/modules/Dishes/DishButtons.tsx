@@ -24,14 +24,14 @@ export default function DishButtons({categories}: {categories: ICategory[]}) {
       <div className="flex justify-end items-center gap-x-2">
         <span
           onClick={() => setActiveForm("food")}
-          className="bg-[#2C2C2C] text-white text-[0.485rem] lg:text-[1.75rem] px-2.5 lg:px-4 lg:py-2 rounded-xl lg:rounded-3xl cursor-pointer"
+          className="bg-[#2C2C2C] text-white text-[0.5rem] lg:text-[1.5rem] px-2 lg:px-4   py-1 lg:py-0 rounded-xl lg:rounded-3xl cursor-pointer"
         >
           Add Food
         </span>
 
         <span
           onClick={() => setActiveForm("category")}
-          className="bg-[#2C2C2C] text-white text-[0.485rem] lg:text-[1.75rem] px-2.5 lg:px-4 lg:py-2 rounded-xl lg:rounded-3xl cursor-pointer"
+          className="bg-[#2C2C2C] text-white text-[0.5rem] lg:text-[1.5rem] px-2 lg:px-4 py-1 lg:py-0 rounded-xl lg:rounded-3xl cursor-pointer"
         >
           Add Category
         </span>

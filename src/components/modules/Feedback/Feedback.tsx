@@ -6,7 +6,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
 export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
-   const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
   const controls = useAnimation();
 
@@ -17,8 +17,8 @@ export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
   }, [inView, controls]);
 
   return (
-    <section className="lg:mx-56 mx-4" ref={ref}>
-      <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-8">
+    <section ref={ref}>
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-20">
         {/* Feedback section - slide from left */}
         <FeedbackList feedbacks={feedbacks} controls={controls} />
         {/* RIGHT: Image - slide from bottom */}
@@ -36,18 +36,18 @@ export default function Feedback({ feedbacks }: { feedbacks: IFeedback[] }) {
           }}
         >
           <div
-            className="w-72 h-80 bg-[#AD1519]"
+            className="w-80 h-92 bg-[#AD1519]"
             style={{
               clipPath: "polygon(0% 40%, 100% 0%, 100% 100%, 0% 100%)",
             }}
           ></div>
-          <div className="absolute h-92 w-72 inset-0 m-auto mb-0 z-10">
+          <div className="absolute h-96 max-w-72 inset-0 m-auto mb-0 z-10">
             <Image
               fill
               src="https://res.cloudinary.com/dzmvhztng/image/upload/v1763999213/shef_lxtvm5.png"
               alt="Chef"
               sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
-              loading="eager" 
+              loading="eager"
               priority
             />
           </div>

@@ -61,8 +61,8 @@ export default function Members({ members }: { members: IMember[] }) {
       </div>
 
       {/* Team Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 max-w-4xl gap-4 mx-4 md:mx-auto lg:mx-auto">
-        {members.map((member, i) =>
+      <div className="grid grid-cols-2 lg:grid-cols-4 max-w-4xl gap-4 mx-4 md:mx-10 lg:mx-auto">
+        {members && members.map((member, i) =>
           isMobile ? (
             <motion.div
               key={member._id}

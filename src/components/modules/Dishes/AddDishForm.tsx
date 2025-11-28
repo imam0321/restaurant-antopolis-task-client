@@ -47,8 +47,8 @@ export function AddFoodForm({
   }, [state, onSuccess, onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/10 flex justify-center items-center p-2">
-      <div className="relative w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
+    <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center">
+      <div className="relative max-w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 font-bold"
@@ -56,7 +56,6 @@ export function AddFoodForm({
         >
           ✕
         </button>
-
         <h2 className="text-lg text-center text-white mb-8">Add Food</h2>
 
         <form action={formAction} className="space-y-2">
@@ -75,7 +74,7 @@ export function AddFoodForm({
             required
           >
             <option
-              className="text-white/50 bg-[#999999] backdrop-blur-sm "
+              className="text-white/50 bg-[#999999] backdrop-blur-sm"
               value=""
             >
               Select Category
@@ -85,7 +84,7 @@ export function AddFoodForm({
                 <option
                   key={cat._id}
                   value={cat._id}
-                  className="text-white/50 bg-[#999999] backdrop-blur-sm "
+                  className="text-white/50 bg-[#999999] backdrop-blur-sm"
                 >
                   {cat.name}
                 </option>

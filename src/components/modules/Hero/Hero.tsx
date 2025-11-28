@@ -1,10 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import HeroNav from "./HeroNav";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import HeroCircleAnimation from "./HeroCircleAnimation";
-import HeroMobileCarousel from "./HeroMobileCarousel";
+import HeroMobileCarousel from "./HeroMobileView";
 import HeroDesktopLeft from "./HeroDesktopLeft";
 
 export interface IBaseImage {
@@ -47,25 +45,6 @@ export default function Hero() {
 
   const activeImage =
     baseImages.find((img) => img.id === activeImageId) || baseImages[0];
-
-  const handleNextPrev = (moveDirection: "next" | "prev") => {
-    const currentIndex = baseImages.findIndex(
-      (img) => img.id === activeImageId
-    );
-    let newIndex;
-    let newDirection;
-
-    if (moveDirection === "next") {
-      newIndex = (currentIndex + 1) % baseImages.length;
-      newDirection = 1;
-    } else {
-      newIndex = (currentIndex - 1 + baseImages.length) % baseImages.length;
-      newDirection = -1;
-    }
-
-    setDirection(newDirection);
-    setActiveImageId(baseImages[newIndex].id);
-  };
 
   const handleThumbnailClick = (id: number) => {
     const currentIndex = baseImages.findIndex(
@@ -110,7 +89,6 @@ export default function Hero() {
         mainImageSrc={mainImageSrc}
         direction={direction}
       />
-      {/* Content container */}
       <div className="relative z-20 px-4">
         <HeroNav />
         {/* desktop left section */}
@@ -119,46 +97,12 @@ export default function Hero() {
           activeImageId={activeImageId}
           handleThumbnailClick={handleThumbnailClick}
         />
-        {/* Mobile Header */}
-        <header className="text-white mt-6 max-w-lg mx-5 lg:hidden md:hidden">
-          <h1 className="text-[2.813rem] font-normal">BREAKFAST</h1>
-          <p className="mt-3 text-base font-normal w-[280px]">
-            Breakfast, often referred to as the ‘most important meal of the
-            day’, provides essential nutrients to kick start our day.{" "}
-            <span className="underline text-base font-normal">See more</span>
-          </p>
-        </header>
-        {/* Mobile main image carousel */}
-        <div className="mt-12 lg:hidden md:hidden">
-          <div className="flex justify-between items-center">
-            <button
-              onClick={() => handleNextPrev("prev")}
-              className="w-10 h-10 bg-[#F5878752] rounded-full flex items-center justify-center"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" strokeWidth={3} />
-            </button>
-            <figure className="relative w-[190px] h-[190px]">
-              <Image
-                src={mainImageSrc}
-                fill
-                alt="image"
-                className="object-contain"
-                key={mainImageSrc}
-                loading="eager"
-                sizes="(max-width: 768px) 438px, (max-width: 1024px) 538px, 750px"
-              />
-            </figure>
-            <button
-              onClick={() => handleNextPrev("next")}
-              className="w-10 h-10 bg-[#F5878752] rounded-full flex items-center justify-center"
-            >
-              <ChevronRight className="w-5 h-5 text-white" strokeWidth={3} />
-            </button>
-          </div>
-        </div>
+
         {/* Mobile Image thumbnails for Carousel */}
         <HeroMobileCarousel
           baseImages={baseImages}
+          mainImageSrc={mainImageSrc}
+          setDirection={setDirection}
           activeImageId={activeImageId}
           setActiveImageId={setActiveImageId}
         />

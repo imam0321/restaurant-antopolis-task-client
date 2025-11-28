@@ -22,8 +22,8 @@ export default function AddCategoryForm({
   }, [state, onSuccess, onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/10 flex justify-center items-center p-2">
-      <div className="relative w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
+    <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center p-2">
+      <div className="relative max-w-[250px] mx-auto bg-[#999999] backdrop-blur-sm rounded-lg shadow-lg p-4 border-l border-r border-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-700 font-bold"
@@ -31,7 +31,6 @@ export default function AddCategoryForm({
         >
           ✕
         </button>
-
         <h2 className="text-lg text-center text-white mb-4">Add Category</h2>
 
         <form action={formAction} className="space-y-2">
@@ -41,7 +40,7 @@ export default function AddCategoryForm({
               name="name"
               placeholder="Category Name"
               disabled={isPending}
-              className="w-full px-6 py-1 rounded-full border border-linear-to-r from-[#FFFFFF] to-[#7C7B7B] opacity-80  text-white focus:outline-none"
+              className="w-full px-6 py-1 rounded-full border border-linear-to-r from-[#FFFFFF] to-[#7C7B7B] opacity-80 text-white focus:outline-none"
               required
             />
 
