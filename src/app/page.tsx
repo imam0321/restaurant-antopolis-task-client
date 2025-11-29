@@ -37,7 +37,10 @@ export default async function HomePage({
         <Dishes dishes={dishes?.data} categories={categories?.data} />
         <Feedback feedbacks={feedbacks?.data} />
       </div>
-      <Members members={members?.data} />
+      
+      <div className="overflow-x-hidden">
+        <Members members={members?.data} />
+      </div>
       <Partners />
       <Footer />
     </div>
